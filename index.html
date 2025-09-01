@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise Bakery - Fresh Baked Goods Daily</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: linear-gradient(135deg, #8B4513, #D2691E);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #FFE4B5;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(139, 69, 19, 0.7), rgba(210, 105, 30, 0.7)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23F5DEB3" width="1200" height="600"/><circle fill="%23DEB887" cx="200" cy="150" r="80"/><circle fill="%23D2691E" cx="800" cy="200" r="60"/><circle fill="%23CD853F" cx="400" cy="400" r="70"/><circle fill="%23F4A460" cx="1000" cy="350" r="90"/></svg>');
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .cta-button {
+            background: #FF6347;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: #FF4500;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 99, 71, 0.4);
+        }
+
+        /* Products Section */
+        .products {
+            padding: 80px 0;
+            background: #FFF8DC;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #8B4513;
+            margin-bottom: 3rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-card h3 {
+            color: #8B4513;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .product-card p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #FF6347;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            color: #8B4513;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-image {
+            background: linear-gradient(45deg, #DEB887, #F4A460);
+            height: 400px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: #F5DEB3;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info h3 {
+            color: #8B4513;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #8B4513;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #DEB887;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #8B4513;
+        }
+
+        /* Footer */
+        .footer {
+            background: #8B4513;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer p {
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #FFE4B5;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Section spacing for fixed navbar */
+        section {
+            scroll-margin-top: 80px;
+        }
+
+
+      .hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+              url("Screenshot\ 2025-08-24\ 121901.png"); /* <-- yahan apni photo ka path do */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.hero h1, 
+.hero p {
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+}
+
+
+
+
+.hero {
+  position: relative;
+  background: url("Screenshot\ 2025-08-24\ 121901.png") no-repeat center center/cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);  /* हल्की dark overlay */
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1); /* हल्का glass effect */
+  backdrop-filter: blur(5px);
+  border-radius: 12px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.hero button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #ff9800;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.hero button:hover {
+  background: #e68900;
+  transform: scale(1.05);
+}
+
+
+
+
+
+.about-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom, #e09c57, #e8a15e);
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.about-image img {
+  max-width: 100%;
+  max-height: 350px;   /* height fix */
+  object-fit: cover;   /* image proportion maintain */
+  border-radius: 15px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+
+.logo-img {
+    height: 50px;   /* size apne hisaab se adjust karna */
+    width: auto;
+}
+
+
+
+
+
+
+.cake-section {
+  text-align: center;
+  padding: 50px 20px;
+  background: #fafafa;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.cake-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.cake-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cake-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.cake-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.cake-card p {
+  font-size: 0.95rem;
+  color: #666;
+}
+
+.cake-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+
+
+
+.cake-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.cake-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.cake-card:hover {
+  background: #ffe6e6; /* light pink highlight */
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  transform: translateY(-5px); /* thoda upar lift */
+}
+
+.cake-card:hover img {
+  transform: scale(1.05); /* thoda zoom in */
+}
+
+.cake-card h3 {
+  margin-top: 10px;
+  font-size: 20px;
+  color: #333;
+  transition: color 0.3s ease-in-out;
+}
+
+.cake-card:hover h3 {
+  color: #c0392b; /* text color change on hover */
+}
+
+
+
+
+
+
+
+
+
+.bakery-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 10px 20px;
+  border: none;
+  background: #eee;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+.tab.active, .tab:hover {
+  background: #d35400;
+  color: white;
+  border-radius: 5px;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.tab-content img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
+}  
+
+
+ 
+.slider{
+    width: 100%;
+}
+
+.slider input{
+    display: none;
+}
+
+.cards{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-height: 350px;
+    perspective: 1000px;
+}
+
+.cards .item{
+    width: 300px;
+    height: 400px;
+    border-radius: 5px;
+    background-color: #21262d;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    text-align: center;
+    box-sizing: border-box;
+    user-select: none;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    transition: transform 0.4s;
+    border: 3px solid #fff;
+    overflow: hidden;
+}
+
+.cards .item .main_content{
+    width: 100%;
+}
+
+.cards .item .main_content .img{
+    width: 100%;
+    height: 100%;
+}
+
+.cards .item .main_content .img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cards .item .main_content .content{
+    display: none;
+}
+
+.cards .item .main_content .content h1{
+    font-size: 30px;
+    color: #fff;
+}
+
+.cards .item .main_content .content h4,
+.cards .item .main_content .content p{
+    margin-top: -10px;
+}
+
+.cards .item .main_content .content p{
+    font-size: 13px;
+    font-weight: 300;
+}
+
+.cards .item .main_content .content .social{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.content .social .icon{
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content .social .icon i{
+    color: #000;
+    font-size: 22px;
+    transition: 0.5s;
+}
+
+.content .social .icon:hover i{
+    color: var(--color);
+}
+
+
+.dots{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+}
+
+.dots label{
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    background-color: #21262d;
+    cursor: pointer;
+    margin: 7px;
+    transition-duration: 0.2s;
+}
+
+
+
+#c-1:checked ~ .dots label[for="c-1"],
+#c-2:checked ~ .dots label[for="c-2"],
+#c-3:checked ~ .dots label[for="c-3"],
+#c-4:checked ~ .dots label[for="c-4"],
+#c-5:checked ~ .dots label[for="c-5"]{
+    transform: scale(2);
+    background-color: #fff;
+    box-shadow: 0px 0px 0px 3px #342f2fe6;
+}
+
+#c-1:checked ~ .dots label[for="c-2"],
+#c-2:checked ~ .dots label[for="c-1"],
+#c-2:checked ~ .dots label[for="c-3"],
+#c-3:checked ~ .dots label[for="c-2"],
+#c-3:checked ~ .dots label[for="c-4"],
+#c-4:checked ~ .dots label[for="c-3"],
+#c-4:checked ~ .dots label[for="c-5"],
+#c-5:checked ~ .dots label[for="c-4"]{
+    transform: scale(1.5);
+}
+
+#c-1:checked ~ .cards label[for="c-3"],
+#c-2:checked ~ .cards label[for="c-4"],
+#c-3:checked ~ .cards label[for="c-5"],
+#c-4:checked ~ .cards label[for="c-1"],
+#c-5:checked ~ .cards label[for="c-2"]{
+    transform: translate3d(600px, 0, -180px) rotateY(-25deg);
+    z-index: 2;
+}
+
+#c-1:checked ~ .cards label[for="c-2"],
+#c-2:checked ~ .cards label[for="c-3"],
+#c-3:checked ~ .cards label[for="c-4"],
+#c-4:checked ~ .cards label[for="c-5"],
+#c-5:checked ~ .cards label[for="c-1"]{
+    transform: translate3d(300px, 0, -90px) rotateY(-15deg);
+    z-index: 3;
+}
+
+#c-2:checked ~ .cards label[for="c-1"],
+#c-3:checked ~ .cards label[for="c-2"],
+#c-4:checked ~ .cards label[for="c-3"],
+#c-5:checked ~ .cards label[for="c-4"],
+#c-1:checked ~ .cards label[for="c-5"]{
+    transform: translate3d(-300px, 0, -90px) rotateY(15deg);
+    z-index: 3;
+}
+
+#c-3:checked ~ .cards label[for="c-1"],
+#c-4:checked ~ .cards label[for="c-2"],
+#c-5:checked ~ .cards label[for="c-3"],
+#c-2:checked ~ .cards label[for="c-5"],
+#c-1:checked ~ .cards label[for="c-4"]{
+    transform: translate3d(-600px, 0, -180px) rotateY(25deg);
+}
+
+#c-1:checked ~ .cards label[for="c-1"],
+#c-2:checked ~ .cards label[for="c-2"],
+#c-3:checked ~ .cards label[for="c-3"],
+#c-4:checked ~ .cards label[for="c-4"],
+#c-5:checked ~ .cards label[for="c-5"]{
+    z-index: 4;
+    padding: 30px;
+}
+
+#c-1:checked ~ .cards label[for="c-1"] .main_content .img,
+#c-2:checked ~ .cards label[for="c-2"] .main_content .img,
+#c-3:checked ~ .cards label[for="c-3"] .main_content .img,
+#c-4:checked ~ .cards label[for="c-4"] .main_content .img,
+#c-5:checked ~ .cards label[for="c-5"] .main_content .img{
+    margin: auto;
+    width: 150px;
+    height: 150px;
+    background: #fff;
+    padding: 3px;
+    border-radius: 50%;
+}
+
+
+#c-1:checked ~ .cards label[for="c-1"] .main_content .img img,
+#c-2:checked ~ .cards label[for="c-2"] .main_content .img img,
+#c-3:checked ~ .cards label[for="c-3"] .main_content .img img,
+#c-4:checked ~ .cards label[for="c-4"] .main_content .img img,
+#c-5:checked ~ .cards label[for="c-5"] .main_content .img img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#c-1:checked ~ .cards label[for="c-1"] .main_content .content,
+#c-2:checked ~ .cards label[for="c-2"] .main_content .content,
+#c-3:checked ~ .cards label[for="c-3"] .main_content .content,
+#c-4:checked ~ .cards label[for="c-4"] .main_content .content,
+#c-5:checked ~ .cards label[for="c-5"] .main_content .content{
+    display: block;
+}
+
+  </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+            <img src="logo.jpg"   alt="Surprise Bakery Logo" class="logo-img">
+       Surprise Bakery </a>
+<!-- 
+            <a href="#home" class="logo">🧁 Surprise Bakery</a> -->
+            <!-- <ul class="nav-menu">
+    <li><a href="#home" target="_blank">Home</a></li>
+    <li><a href="#products" target="_blank">Products</a></li>
+    <li><a href="#about" target="_blank">About</a></li>
+    <li><a href="#contact" target="_blank">Contact</a></li>
+</ul> -->
+
+<!-- <ul class="nav-menu">
+  <li><a href="index.html#home" target="_blank">Home</a></li>
+  <li><a href="index.html#products" target="_blank">Products</a></li>
+  <li><a href="index.html#about" target="_blank">About</a></li>
+  <li><a href="index.html#contact" target="_blank">Contact</a></li>
+</ul> -->
+  <ul class="nav-menu">
+  <li><a href="#home">Home</a></li>
+  <li><a href="#products">Products</a></li>
+  <li><a href="#about">About</a></li>
+  <li><a href="#contact">Contact</a></li>
+</ul>  
+
+        </div>
+    </nav>
+
+    <section class="hero">
+  <h1>Welcome to Surprise Bakery</h1>
+  <p>Freshly baked goods made with love and the finest ingredients.<br>
+     From delicious cakes to crispy samosas, we have something special for every craving!</p>
+  <button>Explore Our Menu</button>
+</section>
+
+
+    <!-- Hero Section -->
+    <!-- <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Surprise Bakery</h1>
+            <p>Freshly baked goods made with love and the finest ingredients. From delicious cakes to crispy samosas, we have something special for every craving!</p>
+            <a href="#products" class="cta-button">Explore Our Menu</a>
+        </div>
+    </section> -->
+
+    <!-- Products Section -->
+
+
+
+    <section class="cake-section">
+  <h2 class="section-title">Our Cakes</h2>
+  <div class="cake-container">
+    
+    <div class="cake-card">
+      <img src="cake3.jpg" alt="Chocolate Cake">
+      <h3>Chocolate Cake</h3>
+      <p>Rich and moist chocolate cake topped with creamy chocolate ganache. Perfect for all celebrations.</p>
+    </div>
+
+    <div class="cake-card">
+      <img src="red_cake.jpg" alt="Red Velvet Cake">
+      <h3>Red Velvet Cake</h3>
+      <p>Classic red velvet cake layered with smooth cream cheese frosting, a timeless favorite.</p>
+    </div>
+
+    <div class="cake-card">
+      <img src="fruit_cake.jpg" alt="Fruit Cake">
+      <h3>Fruit Cake</h3>
+      <p>Fresh cream fruit cake with seasonal fruits, light and refreshing for every occasion.</p>
+    </div>
+
+
+    <section class="cake-section">
+  <h2 class="section-title">Special Cakes</h2>
+  <div class="cake-container">
+    
+    <div class="cake-card">
+      <img src="Black Forest Cake.jpg" alt="Black Forest Cake">
+      <h3>Black Forest Cake</h3>
+      <p>Delicious layers of chocolate sponge, whipped cream, and cherries, a German classic.</p>
+    </div>
+
+    <div class="cake-card">
+      <img src="Pineapple Cake.jpg" alt="Pineapple Cake">
+      <h3>Pineapple Cake</h3>
+      <p>Light sponge cake with pineapple chunks and cream layers, refreshing and tangy.</p>
+    </div>
+
+    <div class="cake-card">
+      <img src="Butterscotch Cake.jpg" alt="Butterscotch Cake">
+      <h3>Butterscotch Cake</h3>
+      <p>Crunchy butterscotch caramel cake with rich cream, a crunchy and creamy delight.</p>
+    </div>
+
+
+  </div>
+</section>
+
+
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title">Our Delicious Products</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-icon" >🎂</div>
+                    <h3>Custom Cakes</h3>
+                    <p>Beautiful custom cakes for birthdays, weddings, and special occasions. Made fresh daily with premium ingredients.</p>
+                    <div class="price">Starting at 450</div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">🧁</div>
+                    <h3>Cupcakes</h3>
+                    <p>Moist and fluffy cupcakes in various flavors including vanilla, chocolate, red velvet, and seasonal specials.</p>
+                    <div class="price">75 each</div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">🥟</div>
+                    <h3>Baked Samosas</h3>
+                    <p>Crispy, golden samosas filled with spiced potatoes and vegetables. A healthy baked alternative to fried versions.</p>
+                    <div class="price">25 each</div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">🍞</div>
+                    <h3>Fresh Bread</h3>
+                    <p>Artisan breads baked fresh every morning. Choose from sourdough, whole wheat, and classic white loaves.</p>
+                    <div class="price">40 per loaf</div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">🥐</div>
+                    <h3>Pastries</h3>
+                    <p>Buttery croissants, danish pastries, and puff pastries. Perfect for breakfast or an afternoon treat.</p>
+                    <div class="price">35 each</div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">🍪</div>
+                    <h3>Cookies</h3>
+                    <p>Homemade cookies including chocolate chip, oatmeal raisin, and sugar cookies. Baked to perfection.</p>
+                    <div class="price">30 each</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <div class="slider">
+
+        <input type="radio" name="card" id="c-1">
+        <input type="radio" name="card" id="c-2">
+        <input type="radio" name="card" id="c-3" checked>
+        <input type="radio" name="card" id="c-4">
+        <input type="radio" name="card" id="c-5">
+
+
+        <div class="cards">
+
+            <label for="c-1" class="item">
+                <div class="main_content">
+                    <div class="img">
+                        <img src="cake1.jpg" alt="">
+                    </div>
+
+                    <div class="content">
+                        <h1>Jhon Doe</h1>
+                        <h4>Front End Developer</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+
+                        <div class="social">
+                            <div class="icon"><a href="#"><i class="fa-brands fa-facebook" style="--color: #3b5998"></i></a></div>
+                            <div class="icon"><a href="#"><i class="fa-brands fa-square-instagram" style="--color: #e14664"></i></a></div>
+                            <div class="icon"><a href="#"><i class="fa-brands fa-twitter" style="--color: #00acee"></i></a></div>
+                            <div class="icon"><a href="#"><i class="fa-brands fa-linkedin" style="--color: #0077b5"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+            </label>
+
+            <label for="c-2" class="item">
+                <div class="main_content">
+                    <div class="img">
+                        <img src="cake2.jpg" alt="">
+                    </div>
+
+                    <div class="content">
+                        <h1>Michael Lucas</h1>
+                        <h4>Back End Developer</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+
+                        <div class="social">
+                            <div class="icon"><a href="#"><i class="fa-brands fa-facebook" style="--color: #3b5998"></i></a></div>
+                            <div class="icon"><a href="#"><i class="fa-brands fa-square-instagram" style="--color: #e14664"></i></a></div>
+                            <div class="icon"><a href="#"><i class="fa-brands fa-twitter" style="--color: #00acee"></i></a></div>
+                            <div class="icon"><a href="#"><i class="fa-brands fa-linkedin" style="--color: #0077b5"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+            </label>
+
+            <label for="c-3" class="item">
+                <div class="main_content">
+                    <div class="img">
+                        <img src="cake3.jpg" alt="">
+                    </div>
+
+                    <div class="content">
+                        <h1>Henry Elijah</h1>
+                        <h4>Graphics Designer</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+
+                        <div class="social">
+                            <div class="icon"><a href="#"><i class="fa-brands fa-facebook" style="--color: #3b5998"></i></a></div>
+                            <div class="icon"><a href="#"><i class="fa-brands fa-square-instagram" style="--color: #e14664"></i></a></div>
+                            <div class="icon"><a href="#"><i class="fa-brands fa-twitter" style="--color: #00acee"></i></a></div>
+                            <div class="icon"><a href="#"><i class="fa-brands fa-linkedin" style="--color: #0077b5"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+            </label>
+
+            <label for="c-4" class="item">
+                <div class="main_content">
+                    <div class="img">
+                        <img src="red_cake.jpg" alt="">
+                    </div>
+
+                    <div class="content">
+                        <h1>Alexander Leo</h1>
+                        <h4>Data Analyst</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+
+                        <div class="social">
+                            <div class="icon"><a href="#"><i class="fa-brands fa-facebook" style="--color: #3b5998"></i></a></div>
+                            <div class="icon"><a href="#"><i class="fa-brands fa-square-instagram" style="--color: #e14664"></i></a></div>
+                            <div class="icon"><a href="#"><i class="fa-brands fa-twitter" style="--color: #00acee"></i></a></div>
+                            <div class="icon"><a href="#"><i class="fa-brands fa-linkedin" style="--color: #0077b5"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+            </label>
+
+            <label for="c-5" class="item">
+                <div class="main_content">
+                    <div class="img">
+                        <img src="Butterscotch Cake.jpg" alt="">
+                    </div>
+
+                    <div class="content">
+                        <h1>David Joseph</h1>
+                        <h4>Full Stack Developer</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+
+                        <div class="social">
+                            <div class="icon"><a href="#"><i class="fa-brands fa-facebook" style="--color: #3b5998"></i></a></div>
+                            <div class="icon"><a href="#"><i class="fa-brands fa-square-instagram" style="--color: #e14664"></i></a></div>
+                            <div class="icon"><a href="#"><i class="fa-brands fa-twitter" style="--color: #00acee"></i></a></div>
+                            <div class="icon"><a href="#"><i class="fa-brands fa-linkedin" style="--color: #0077b5"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+            </label>
+
+        </div>
+
+        <div class="dots">
+            <label for="c-1"></label>
+            <label for="c-2"></label>
+            <label for="c-3"></label>
+            <label for="c-4"></label>
+            <label for="c-5"></label>
+        </div>
+
+    </div>
+
+
+
+<!-- About Section -->
+<section id="about" class="about">
+  <div class="container">
+    <div class="about-content">
+      <div class="about-text">
+        <h2>About Surprise Bakery</h2>
+        <p>Founded in 2015, Surprise Bakery has been serving the community with the finest baked goods made from scratch daily. Our passion for baking and commitment to quality ingredients sets us apart.</p>
+        <p>We believe that every bite should be a moment of joy. That's why we use only the freshest ingredients, traditional recipes, and a lot of love in everything we create.</p>
+        <p>From our signature cakes to our famous baked samosas, every item is crafted with care and attention to detail. Visit us today and taste the difference!</p>
+      </div>
+      
+      <!-- Video Section -->
+      <div class="about-video">
+        <video width="450" height="450" controls autoplay muted loop style="border-radius:15px; box-shadow:0px 4px 12px rgba(0,0,0,0.3);">
+          <source src="video.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Visit Our Bakery</h3>
+                    <p>📍  Address: Banganga Main Road, Indore, Madhya Pradesh</p>
+                    <p>📞 Phone: 7489186674-CAKE</p>
+                    <p>✉️ Email: riteshprajapti1234@gmail.com</p>
+                    
+                    <h3>Opening Hours</h3>
+                    <p>Monday - Friday: 9:00 AM - 10:00 PM</p>
+                    <p>Saturday: 9:00 AM - 10:00 PM</p>
+                    <p>Sunday: 8:00 AM - 11:00 PM</p>
+                    
+                    <h3>Special Services</h3>
+                    <p>🎂 Custom cake orders</p>
+                    <p>🚚 Delivery available</p>
+                    <p>🎉 Catering services</p>
+                </div>
+                <div class="contact-form">
+                    <h3>Send us a Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="cta-button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>  </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Surprise Bakery. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#">📘</a>
+                <a href="#">📷</a>
+                <a href="#">🐦</a>
+            </div>
+        </div>
+    </footer>
+
+
+<!-- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9748232ef1c641b3',t:'MTc1NjA5Mzk1NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body> -->
+</html>

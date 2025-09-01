@@ -1,0 +1,774 @@
+ <!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Dreams Bakery - सबसे मिठे केक</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .cake-card {
+            transition: all 0.3s ease;
+        }
+        
+        .cake-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .slider {
+            animation: slide 15s infinite;
+        }
+        
+        @keyframes slide {
+            0%, 20% { transform: translateX(0); }
+            25%, 45% { transform: translateX(-100%); }
+            50%, 70% { transform: translateX(-200%); }
+            75%, 95% { transform: translateX(-300%); }
+            100% { transform: translateX(0); }
+        }
+        
+        .auto-scroll {
+            animation: scroll 20s linear infinite;
+        }
+        
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .cake-bg {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <div class="text-3xl">🍰</div>
+                    <h1 class="text-2xl font-bold text-pink-600">Sweet Dreams</h1>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" onclick="showPage('home')" class="nav-link text-gray-700 hover:text-pink-600 font-medium">Home</a>
+                    <a href="#" onclick="showPage('gallery')" class="nav-link text-gray-700 hover:text-pink-600 font-medium">Gallery</a>
+                    <a href="#" onclick="showPage('about')" class="nav-link text-gray-700 hover:text-pink-600 font-medium">About</a>
+                    <a href="#" onclick="showPage('contact')" class="nav-link text-gray-700 hover:text-pink-600 font-medium">Contact</a>
+                </div>
+                <div class="flex space-x-4">
+                    <button onclick="showPage('login')" class="bg-pink-500 text-white px-4 py-2 rounded-lg hover:bg-pink-600 transition">Login</button>
+                    <button onclick="showPage('signup')" class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home" class="page">
+        <!-- Hero Slider -->
+        <div class="relative h-screen overflow-hidden mt-16">
+            <div class="flex slider" style="width: 400%;">
+                <div class="w-1/4 h-screen cake-bg flex items-center justify-center">
+                    <div class="text-center text-white">
+                        <h2 class="text-6xl font-bold mb-4">🎂 Birthday Special</h2>
+                        <p class="text-xl mb-8">सबसे खुशी के पल के लिए खास केक</p>
+                        <button class="bg-white text-pink-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">Order Now</button>
+                    </div>
+                </div>
+                <div class="w-1/4 h-screen gradient-bg flex items-center justify-center">
+                    <div class="text-center text-white">
+                        <h2 class="text-6xl font-bold mb-4">🍰 Wedding Cakes</h2>
+                        <p class="text-xl mb-8">शादी के लिए खूबसूरत केक</p>
+                        <button class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">View Collection</button>
+                    </div>
+                </div>
+                <div class="w-1/4 h-screen bg-gradient-to-r from-yellow-400 to-orange-500 flex items-center justify-center">
+                    <div class="text-center text-white">
+                        <h2 class="text-6xl font-bold mb-4">🧁 Fresh Daily</h2>
+                        <p class="text-xl mb-8">रोज ताजे बने केक और कपकेक</p>
+                        <button class="bg-white text-orange-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">Fresh Today</button>
+                    </div>
+                </div>
+                <div class="w-1/4 h-screen bg-gradient-to-r from-green-400 to-blue-500 flex items-center justify-center">
+                    <div class="text-center text-white">
+                        <h2 class="text-6xl font-bold mb-4">🎉 Party Orders</h2>
+                        <p class="text-xl mb-8">पार्टी के लिए बल्क ऑर्डर</p>
+                        <button class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">Bulk Order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Popular Cakes Section -->
+        <div class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">🌟 Popular Cakes</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="cake-card bg-white rounded-xl shadow-lg overflow-hidden">
+                        <div class="h-48 bg-gradient-to-r from-pink-300 to-pink-500 flex items-center justify-center">
+                            <span class="text-6xl">🍓</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Strawberry Delight</h3>
+                            <p class="text-gray-600 mb-4">Fresh strawberry cake with cream</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-pink-600">₹599</span>
+                                <button class="bg-pink-500 text-white px-4 py-2 rounded-lg hover:bg-pink-600 transition">Order</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cake-card bg-white rounded-xl shadow-lg overflow-hidden">
+                        <div class="h-48 bg-gradient-to-r from-yellow-300 to-orange-400 flex items-center justify-center">
+                            <span class="text-6xl">🍫</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Chocolate Fantasy</h3>
+                            <p class="text-gray-600 mb-4">Rich chocolate cake with ganache</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-orange-600">₹699</span>
+                                <button class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition">Order</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cake-card bg-white rounded-xl shadow-lg overflow-hidden">
+                        <div class="h-48 bg-gradient-to-r from-purple-300 to-purple-500 flex items-center justify-center">
+                            <span class="text-6xl">🎂</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Birthday Special</h3>
+                            <p class="text-gray-600 mb-4">Customized birthday cake</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-purple-600">₹799</span>
+                                <button class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">Order</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Auto Scrolling Testimonials -->
+        <div class="py-16 bg-gray-100 overflow-hidden">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">💕 Customer Reviews</h2>
+            <div class="flex auto-scroll" style="width: 200%;">
+                <div class="flex space-x-8" style="width: 100%;">
+                    <div class="bg-white p-6 rounded-xl shadow-lg min-w-80">
+                        <div class="flex items-center mb-4">
+                            <span class="text-2xl mr-3">👨</span>
+                            <div>
+                                <h4 class="font-semibold">राहुल शर्मा</h4>
+                                <div class="text-yellow-500">⭐⭐⭐⭐⭐</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">"बहुत ही स्वादिष्ट केक! मेरी बेटी का बर्थडे परफेक्ट हो गया।"</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg min-w-80">
+                        <div class="flex items-center mb-4">
+                            <span class="text-2xl mr-3">👩</span>
+                            <div>
+                                <h4 class="font-semibold">प्रिया गुप्ता</h4>
+                                <div class="text-yellow-500">⭐⭐⭐⭐⭐</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">"शादी का केक बहुत खूबसूरत था। सभी मेहमान तारीफ कर रहे थे।"</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg min-w-80">
+                        <div class="flex items-center mb-4">
+                            <span class="text-2xl mr-3">👨</span>
+                            <div>
+                                <h4 class="font-semibold">अमित कुमार</h4>
+                                <div class="text-yellow-500">⭐⭐⭐⭐⭐</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">"ऑनलाइन ऑर्डर करना बहुत आसान था। टाइम पर डिलीवरी मिली।"</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg min-w-80">
+                        <div class="flex items-center mb-4">
+                            <span class="text-2xl mr-3">👩</span>
+                            <div>
+                                <h4 class="font-semibold">सुनीता देवी</h4>
+                                <div class="text-yellow-500">⭐⭐⭐⭐⭐</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">"चॉकलेट केक का स्वाद लाजवाब था। बच्चों को बहुत पसंद आया।"</p>
+                    </div>
+                </div>
+                <div class="flex space-x-8" style="width: 100%;">
+                    <div class="bg-white p-6 rounded-xl shadow-lg min-w-80">
+                        <div class="flex items-center mb-4">
+                            <span class="text-2xl mr-3">👨</span>
+                            <div>
+                                <h4 class="font-semibold">राहुल शर्मा</h4>
+                                <div class="text-yellow-500">⭐⭐⭐⭐⭐</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">"बहुत ही स्वादिष्ट केक! मेरी बेटी का बर्थडे परफेक्ट हो गया।"</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg min-w-80">
+                        <div class="flex items-center mb-4">
+                            <span class="text-2xl mr-3">👩</span>
+                            <div>
+                                <h4 class="font-semibold">प्रिया गुप्ता</h4>
+                                <div class="text-yellow-500">⭐⭐⭐⭐⭐</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">"शादी का केक बहुत खूबसूरत था। सभी मेहमान तारीफ कर रहे थे।"</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg min-w-80">
+                        <div class="flex items-center mb-4">
+                            <span class="text-2xl mr-3">👨</span>
+                            <div>
+                                <h4 class="font-semibold">अमित कुमार</h4>
+                                <div class="text-yellow-500">⭐⭐⭐⭐⭐</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">"ऑनलाइन ऑर्डर करना बहुत आसान था। टाइम पर डिलीवरी मिली।"</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg min-w-80">
+                        <div class="flex items-center mb-4">
+                            <span class="text-2xl mr-3">👩</span>
+                            <div>
+                                <h4 class="font-semibold">सुनीता देवी</h4>
+                                <div class="text-yellow-500">⭐⭐⭐⭐⭐</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">"चॉकलेट केक का स्वाद लाजवाब था। बच्चों को बहुत पसंद आया।"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Page -->
+    <div id="gallery" class="page hidden">
+        <div class="pt-24 pb-16">
+            <div class="max-w-7xl mx-auto px-4">
+                <h1 class="text-5xl font-bold text-center mb-4 text-gray-800">🍰 Cake Gallery</h1>
+                <p class="text-center text-gray-600 mb-12">हमारे खूबसूरत केक का कलेक्शन देखें</p>
+                
+                <!-- Filter Buttons -->
+                <div class="flex flex-wrap justify-center gap-4 mb-12">
+                    <button onclick="filterCakes('all')" class="filter-btn bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition">All Cakes</button>
+                    <button onclick="filterCakes('1pound')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300 transition">1 Pound</button>
+                    <button onclick="filterCakes('2pound')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300 transition">2 Pound</button>
+                    <button onclick="filterCakes('single')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300 transition">Single Layer</button>
+                    <button onclick="filterCakes('double')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300 transition">Double Layer</button>
+                </div>
+
+                <!-- Cake Gallery Grid -->
+                <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-6" id="cakeGrid">
+                    <!-- 1 Pound Cakes -->
+                    <div class="cake-item cake-card bg-white rounded-xl shadow-lg overflow-hidden" data-category="1pound single">
+                        <div class="h-48 bg-gradient-to-r from-pink-300 to-red-400 flex items-center justify-center">
+                            <span class="text-6xl">🍓</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold mb-2">Strawberry Cake</h3>
+                            <p class="text-sm text-gray-600 mb-2">1 Pound | Single Layer</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg font-bold text-pink-600">₹499</span>
+                                <button class="bg-pink-500 text-white px-3 py-1 rounded hover:bg-pink-600 transition text-sm">Order</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cake-item cake-card bg-white rounded-xl shadow-lg overflow-hidden" data-category="1pound single">
+                        <div class="h-48 bg-gradient-to-r from-yellow-300 to-orange-400 flex items-center justify-center">
+                            <span class="text-6xl">🍫</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold mb-2">Chocolate Cake</h3>
+                            <p class="text-sm text-gray-600 mb-2">1 Pound | Single Layer</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg font-bold text-orange-600">₹549</span>
+                                <button class="bg-orange-500 text-white px-3 py-1 rounded hover:bg-orange-600 transition text-sm">Order</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cake-item cake-card bg-white rounded-xl shadow-lg overflow-hidden" data-category="1pound single">
+                        <div class="h-48 bg-gradient-to-r from-green-300 to-green-500 flex items-center justify-center">
+                            <span class="text-6xl">🥝</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold mb-2">Kiwi Fresh</h3>
+                            <p class="text-sm text-gray-600 mb-2">1 Pound | Single Layer</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg font-bold text-green-600">₹599</span>
+                                <button class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 transition text-sm">Order</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cake-item cake-card bg-white rounded-xl shadow-lg overflow-hidden" data-category="1pound single">
+                        <div class="h-48 bg-gradient-to-r from-purple-300 to-purple-500 flex items-center justify-center">
+                            <span class="text-6xl">🍇</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold mb-2">Grape Delight</h3>
+                            <p class="text-sm text-gray-600 mb-2">1 Pound | Single Layer</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg font-bold text-purple-600">₹529</span>
+                                <button class="bg-purple-500 text-white px-3 py-1 rounded hover:bg-purple-600 transition text-sm">Order</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2 Pound Cakes -->
+                    <div class="cake-item cake-card bg-white rounded-xl shadow-lg overflow-hidden" data-category="2pound double">
+                        <div class="h-48 bg-gradient-to-r from-pink-400 to-red-500 flex items-center justify-center">
+                            <span class="text-6xl">🎂</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold mb-2">Birthday Special</h3>
+                            <p class="text-sm text-gray-600 mb-2">2 Pound | Double Layer</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg font-bold text-pink-600">₹899</span>
+                                <button class="bg-pink-500 text-white px-3 py-1 rounded hover:bg-pink-600 transition text-sm">Order</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cake-item cake-card bg-white rounded-xl shadow-lg overflow-hidden" data-category="2pound double">
+                        <div class="h-48 bg-gradient-to-r from-yellow-400 to-orange-500 flex items-center justify-center">
+                            <span class="text-6xl">🍰</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold mb-2">Mango Supreme</h3>
+                            <p class="text-sm text-gray-600 mb-2">2 Pound | Double Layer</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg font-bold text-orange-600">₹999</span>
+                                <button class="bg-orange-500 text-white px-3 py-1 rounded hover:bg-orange-600 transition text-sm">Order</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cake-item cake-card bg-white rounded-xl shadow-lg overflow-hidden" data-category="2pound double">
+                        <div class="h-48 bg-gradient-to-r from-blue-300 to-blue-500 flex items-center justify-center">
+                            <span class="text-6xl">🫐</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold mb-2">Blueberry Tower</h3>
+                            <p class="text-sm text-gray-600 mb-2">2 Pound | Double Layer</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg font-bold text-blue-600">₹1099</span>
+                                <button class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition text-sm">Order</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cake-item cake-card bg-white rounded-xl shadow-lg overflow-hidden" data-category="2pound double">
+                        <div class="h-48 bg-gradient-to-r from-red-400 to-pink-500 flex items-center justify-center">
+                            <span class="text-6xl">🌹</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold mb-2">Rose Garden</h3>
+                            <p class="text-sm text-gray-600 mb-2">2 Pound | Double Layer</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg font-bold text-red-600">₹1199</span>
+                                <button class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition text-sm">Order</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- More Single Layer Options -->
+                    <div class="cake-item cake-card bg-white rounded-xl shadow-lg overflow-hidden" data-category="1pound single">
+                        <div class="h-48 bg-gradient-to-r from-indigo-300 to-indigo-500 flex items-center justify-center">
+                            <span class="text-6xl">🧁</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold mb-2">Vanilla Dream</h3>
+                            <p class="text-sm text-gray-600 mb-2">1 Pound | Single Layer</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg font-bold text-indigo-600">₹479</span>
+                                <button class="bg-indigo-500 text-white px-3 py-1 rounded hover:bg-indigo-600 transition text-sm">Order</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cake-item cake-card bg-white rounded-xl shadow-lg overflow-hidden" data-category="2pound single">
+                        <div class="h-48 bg-gradient-to-r from-teal-300 to-teal-500 flex items-center justify-center">
+                            <span class="text-6xl">🥥</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold mb-2">Coconut Paradise</h3>
+                            <p class="text-sm text-gray-600 mb-2">2 Pound | Single Layer</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg font-bold text-teal-600">₹749</span>
+                                <button class="bg-teal-500 text-white px-3 py-1 rounded hover:bg-teal-600 transition text-sm">Order</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cake-item cake-card bg-white rounded-xl shadow-lg overflow-hidden" data-category="1pound double">
+                        <div class="h-48 bg-gradient-to-r from-amber-300 to-amber-500 flex items-center justify-center">
+                            <span class="text-6xl">🍯</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold mb-2">Honey Layers</h3>
+                            <p class="text-sm text-gray-600 mb-2">1 Pound | Double Layer</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg font-bold text-amber-600">₹699</span>
+                                <button class="bg-amber-500 text-white px-3 py-1 rounded hover:bg-amber-600 transition text-sm">Order</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cake-item cake-card bg-white rounded-xl shadow-lg overflow-hidden" data-category="2pound double">
+                        <div class="h-48 bg-gradient-to-r from-rose-300 to-rose-500 flex items-center justify-center">
+                            <span class="text-6xl">💖</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold mb-2">Love Special</h3>
+                            <p class="text-sm text-gray-600 mb-2">2 Pound | Double Layer</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg font-bold text-rose-600">₹1299</span>
+                                <button class="bg-rose-500 text-white px-3 py-1 rounded hover:bg-rose-600 transition text-sm">Order</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Page -->
+    <div id="login" class="page hidden">
+        <div class="min-h-screen flex items-center justify-center bg-gradient-to-r from-pink-400 to-purple-500 pt-16">
+            <div class="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md">
+                <div class="text-center mb-8">
+                    <div class="text-6xl mb-4">🍰</div>
+                    <h2 class="text-3xl font-bold text-gray-800">Login</h2>
+                    <p class="text-gray-600">अपने अकाउंट में लॉगिन करें</p>
+                </div>
+                <form class="space-y-6">
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">Email/Phone</label>
+                        <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent" placeholder="आपका ईमेल या फोन नंबर">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">Password</label>
+                        <input type="password" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent" placeholder="पासवर्ड">
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded border-gray-300 text-pink-600 focus:ring-pink-500">
+                            <span class="ml-2 text-sm text-gray-600">Remember me</span>
+                        </label>
+                        <a href="#" class="text-sm text-pink-600 hover:text-pink-800">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="w-full bg-pink-500 text-white py-3 rounded-lg font-semibold hover:bg-pink-600 transition">Login</button>
+                </form>
+                <div class="mt-6 text-center">
+                    <p class="text-gray-600">Don't have an account? <a href="#" onclick="showPage('signup')" class="text-pink-600 hover:text-pink-800 font-medium">Sign Up</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign Up Page -->
+    <div id="signup" class="page hidden">
+        <div class="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-400 to-pink-500 pt-16">
+            <div class="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md">
+                <div class="text-center mb-8">
+                    <div class="text-6xl mb-4">🧁</div>
+                    <h2 class="text-3xl font-bold text-gray-800">Sign Up</h2>
+                    <p class="text-gray-600">नया अकाउंट बनाएं</p>
+                </div>
+                <form class="space-y-6">
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">Full Name</label>
+                        <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="आपका पूरा नाम">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">Email</label>
+                        <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="आपका ईमेल">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">Phone Number</label>
+                        <input type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="फोन नंबर">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">Password</label>
+                        <input type="password" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="पासवर्ड">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">Confirm Password</label>
+                        <input type="password" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="पासवर्ड दोबारा डालें">
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" class="rounded border-gray-300 text-purple-600 focus:ring-purple-500">
+                        <span class="ml-2 text-sm text-gray-600">I agree to Terms & Conditions</span>
+                    </div>
+                    <button type="submit" class="w-full bg-purple-500 text-white py-3 rounded-lg font-semibold hover:bg-purple-600 transition">Create Account</button>
+                </form>
+                <div class="mt-6 text-center">
+                    <p class="text-gray-600">Already have an account? <a href="#" onclick="showPage('login')" class="text-purple-600 hover:text-purple-800 font-medium">Login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="page hidden">
+        <div class="pt-24 pb-16">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h1 class="text-5xl font-bold mb-4 text-gray-800">🏪 About Sweet Dreams</h1>
+                    <p class="text-xl text-gray-600">हमारी कहानी और मिशन</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-6 text-gray-800">हमारी कहानी</h2>
+                        <p class="text-gray-600 mb-4">Sweet Dreams Bakery की शुरुआत 2015 में हुई थी। हमारा सपना था कि हर खुशी के मौके को और भी मिठा बनाया जाए।</p>
+                        <p class="text-gray-600 mb-4">आज हम शहर की सबसे भरोसेमंद बेकरी हैं, जो ताजे और स्वादिष्ट केक बनाती है।</p>
+                        <p class="text-gray-600">हमारे पास अनुभवी शेफ हैं जो हर केक को प्यार से बनाते हैं।</p>
+                    </div>
+                    <div class="bg-gradient-to-r from-pink-300 to-purple-400 rounded-2xl p-8 text-center">
+                        <div class="text-8xl mb-4">👨‍🍳</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Master Chef</h3>
+                        <p class="text-white">15+ साल का अनुभव</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 mb-16">
+                    <div class="text-center p-6 bg-white rounded-xl shadow-lg">
+                        <div class="text-4xl mb-4">🎂</div>
+                        <h3 class="text-xl font-bold mb-2">1000+</h3>
+                        <p class="text-gray-600">Happy Customers</p>
+                    </div>
+                    <div class="text-center p-6 bg-white rounded-xl shadow-lg">
+                        <div class="text-4xl mb-4">⭐</div>
+                        <h3 class="text-xl font-bold mb-2">4.9/5</h3>
+                        <p class="text-gray-600">Customer Rating</p>
+                    </div>
+                    <div class="text-center p-6 bg-white rounded-xl shadow-lg">
+                        <div class="text-4xl mb-4">🚚</div>
+                        <h3 class="text-xl font-bold mb-2">24/7</h3>
+                        <p class="text-gray-600">Delivery Service</p>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-r from-pink-500 to-purple-600 rounded-2xl p-8 text-center text-white">
+                    <h2 class="text-3xl font-bold mb-4">हमारा मिशन</h2>
+                    <p class="text-lg">हर खुशी के पल को मिठास से भर देना और आपकी यादों को और भी खास बनाना।</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page hidden">
+        <div class="pt-24 pb-16">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h1 class="text-5xl font-bold mb-4 text-gray-800">📞 Contact Us</h1>
+                    <p class="text-xl text-gray-600">हमसे जुड़ें</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-8 text-gray-800">Get in Touch</h2>
+                        <div class="space-y-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="bg-pink-500 text-white p-3 rounded-full">📍</div>
+                                <div>
+                                    <h3 class="font-semibold">Address</h3>
+                                    <p class="text-gray-600">123 Sweet Street, Cake City, India</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="bg-purple-500 text-white p-3 rounded-full">📞</div>
+                                <div>
+                                    <h3 class="font-semibold">Phone</h3>
+                                    <p class="text-gray-600">+91 98765 43210</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="bg-blue-500 text-white p-3 rounded-full">✉️</div>
+                                <div>
+                                    <h3 class="font-semibold">Email</h3>
+                                    <p class="text-gray-600">info@sweetdreams.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="bg-green-500 text-white p-3 rounded-full">🕒</div>
+                                <div>
+                                    <h3 class="font-semibold">Hours</h3>
+                                    <p class="text-gray-600">Mon-Sun: 8:00 AM - 10:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-8 rounded-2xl shadow-lg">
+                        <h3 class="text-2xl font-bold mb-6 text-gray-800">Send Message</h3>
+                        <form class="space-y-6">
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Name</label>
+                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent" placeholder="आपका नाम">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Email</label>
+                                <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent" placeholder="आपका ईमेल">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Message</label>
+                                <textarea rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent" placeholder="आपका मैसेज"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-pink-500 text-white py-3 rounded-lg font-semibold hover:bg-pink-600 transition">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="text-3xl">🍰</div>
+                        <h3 class="text-xl font-bold">Sweet Dreams</h3>
+                    </div>
+                    <p class="text-gray-400">सबसे मिठे केक और खुशियों का घर</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" onclick="showPage('home')" class="hover:text-white">Home</a></li>
+                        <li><a href="#" onclick="showPage('gallery')" class="hover:text-white">Gallery</a></li>
+                        <li><a href="#" onclick="showPage('about')" class="hover:text-white">About</a></li>
+                        <li><a href="#" onclick="showPage('contact')" class="hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Categories</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Birthday Cakes</a></li>
+                        <li><a href="#" class="hover:text-white">Wedding Cakes</a></li>
+                        <li><a href="#" class="hover:text-white">Custom Cakes</a></li>
+                        <li><a href="#" class="hover:text-white">Cupcakes</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-2xl hover:text-pink-400">📘</a>
+                        <a href="#" class="text-2xl hover:text-pink-400">📷</a>
+                        <a href="#" class="text-2xl hover:text-pink-400">🐦</a>
+                        <a href="#" class="text-2xl hover:text-pink-400">📱</a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Sweet Dreams Bakery. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Page Navigation
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.add('hidden'));
+            
+            // Show selected page
+            document.getElementById(pageId).classList.remove('hidden');
+            
+            // Update nav links
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('text-pink-600'));
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Cake Gallery Filter
+        function filterCakes(category) {
+            const cakeItems = document.querySelectorAll('.cake-item');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            
+            // Update button styles
+            filterBtns.forEach(btn => {
+                btn.classList.remove('bg-pink-500', 'text-white');
+                btn.classList.add('bg-gray-200', 'text-gray-700');
+            });
+            
+            event.target.classList.remove('bg-gray-200', 'text-gray-700');
+            event.target.classList.add('bg-pink-500', 'text-white');
+            
+            // Filter cakes
+            cakeItems.forEach(item => {
+                if (category === 'all') {
+                    item.style.display = 'block';
+                } else {
+                    const categories = item.getAttribute('data-category');
+                    if (categories.includes(category)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                }
+            });
+        }
+
+        // Form Submissions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Login form
+            const loginForm = document.querySelector('#login form');
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('लॉगिन सफल! आपका स्वागत है।');
+                });
+            }
+            
+            // Signup form
+            const signupForm = document.querySelector('#signup form');
+            if (signupForm) {
+                signupForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('अकाउंट बन गया! अब आप लॉगिन कर सकते हैं।');
+                    showPage('login');
+                });
+            }
+            
+            // Contact form
+            const contactForm = document.querySelector('#contact form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('मैसेज भेज दिया गया! हम जल्दी जवाब देंगे।');
+                    this.reset();
+                });
+            }
+            
+            // Order buttons
+            document.addEventListener('click', function(e) {
+                if (e.target.textContent === 'Order' || e.target.textContent === 'Order Now') {
+                    e.preventDefault();
+                    alert('ऑर्डर के लिए कॉल करें: +91 98765 43210');
+                }
+            });
+        });
+             </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'976dd780d71a48da',t:'MTc1NjQ4OTMxNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+
+
+</html>
